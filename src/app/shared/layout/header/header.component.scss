@@ -54,6 +54,7 @@ header.header {
       .header-top-actions {
         display: flex;
         align-items: center;
+        cursor: pointer;
 
         a {
           margin-right: 8px;
@@ -115,6 +116,7 @@ header.header {
           }
         }
       }
+
       .header-bottom-search {
         position: relative;
 
