@@ -37,11 +37,9 @@
     </div>
     <div class="catalog-layout">
       <div class="catalog-filters">
-
         <category-filter *ngFor="let categoryWithTypes of categoriesWithTypes" [categoryWithTypes]="categoryWithTypes"></category-filter>
         <category-filter [type]="'height'"></category-filter>
         <category-filter [type]="'diameter'"></category-filter>
-
       </div>
       <div class="catalog-products">
         <product-card *ngFor="let product of products" [product]="product"></product-card>
