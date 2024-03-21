@@ -45,9 +45,11 @@
 
       .catalog-sorting {
         width: 190px;
+        min-width: 190px;
         box-sizing: border-box;
         position: relative;
         font-size: 16px;
+        cursor: pointer;
 
         .catalog-sorting-head {
           display: flex;
@@ -88,6 +90,7 @@
 
         &.open {
           width: 257px;
+          min-width: 257px;
 
           .catalog-sorting-head {
             color: #000000;
@@ -119,6 +122,13 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 26px 30px;
+
+        .not-found-products {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 500;
+          font-size: 20px;
+          grid-area: 1 / 1 / 2 / 5;
+        }
       }
     }
 
