@@ -45,7 +45,7 @@
         <div class="not-found-products" *ngIf="products.length === 0">
           Товары не найдены. Попробуйте изменить параметры поиска.
         </div>
-        <product-card *ngFor="let product of products" [product]="product"></product-card>
+        <product-card *ngFor="let product of products" [product]="product" [countInCart]="product.countInCart"></product-card>
       </div>
     </div>
     <div class="pagination" *ngIf="pages.length > 1">
