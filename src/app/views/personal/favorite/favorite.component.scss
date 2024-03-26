@@ -12,6 +12,23 @@
       margin-bottom: 35px;
     }
 
+    .favorite-empty {
+      margin-top: 20px;
+      margin-bottom: 100px;
+
+      div {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        color: $gray-text-color;
+      }
+
+      .button {
+        width: 255px;
+        margin-top: 10px;
+      }
+    }
+
     .favorite-products {
 
       .favorite-product {
