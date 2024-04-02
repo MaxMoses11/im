@@ -9,9 +9,6 @@ import {OrderType} from "../../../types/order.type";
   providedIn: 'root'
 })
 export class OrderService {
-
-  count: number = 0;
-  count$: Subject<number> = new Subject<number>();
   constructor(private http: HttpClient) { }
 
   createOrder(params: OrderType): Observable<OrderType | DefaultResponseType> {
