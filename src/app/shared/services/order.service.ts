@@ -16,4 +16,8 @@ export class OrderService {
       params,
       {withCredentials: true})
   }
+
+  getOrders(): Observable<OrderType[] | DefaultResponseType> {
+    return this.http.get<OrderType[] | DefaultResponseType>(environment.api + 'orders')
+  }
 }
