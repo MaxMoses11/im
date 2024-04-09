@@ -23,6 +23,7 @@ export class DetailComponent implements OnInit {
   product!: ProductType;
   serverStaticPath = environment.serverStaticPath;
   count: number = 1;
+  isLogged: boolean = false;
 
   customOptions: OwlOptions = {
     loop: true,
@@ -56,6 +57,7 @@ export class DetailComponent implements OnInit {
               private favoriteService: FavoriteService,
               private _snackBar: MatSnackBar,
               private authService: AuthService) {
+    this.isLogged = this.authService.getIsLoggedIn();
   }
 
   ngOnInit(): void {

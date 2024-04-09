@@ -3,6 +3,8 @@ import {FavoriteService} from "../../../shared/services/favorite.service";
 import {FavoriteType} from "../../../../types/favorite.type";
 import {DefaultResponseType} from "../../../../types/default-response.type";
 import {environment} from "../../../../environments/environment";
+import {CartService} from "../../../shared/services/cart.service";
+import {CartType} from "../../../../types/cart.type";
 
 @Component({
   selector: 'app-favorite',
@@ -13,8 +15,9 @@ export class FavoriteComponent implements OnInit {
 
   products: FavoriteType[] = [];
   serverStaticPath = environment.serverStaticPath;
+  count: number = 1;
 
-  constructor(private favoriteService: FavoriteService) { }
+  constructor(private favoriteService: FavoriteService, private cartService: CartService,) { }
 
   ngOnInit(): void {
     this.favoriteService.getFavorites()
@@ -25,6 +28,25 @@ export class FavoriteComponent implements OnInit {
         }
 
         this.products = data as FavoriteType[];
+
+        this.cartService.getCart()
+          .subscribe((cartData: CartType | DefaultResponseType) => {
+            if ((cartData as DefaultResponseType).error !== undefined) {
+              throw new Error((cartData as DefaultResponseType).message);
+            }
+
+            const cartDataResponse = cartData as CartType;
+
+            if (cartData) {
+              this.products.forEach(product => {
+                const productInCart = cartDataResponse.items.find(item => item.product.id === product.id);
+                if (productInCart) {
+                  product.countInCart = productInCart.quantity;
+                  this.count = product.countInCart;
+                }
+              });
+            }
+          });
       });
   }
 
